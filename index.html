@@ -13,9 +13,11 @@
     <header class="logo">
         <h2> Flowers-Gallery</h2>
     </header>
-    <main class="main-class">
+    <main class="main-class hidden">
         <section class="details-container">
+            <audio id="audio" src=""></audio>
             <div class="detais-frame">
+                <button id="hide-button" onclick="hideDetails()">X</button>
                 <img src="styles/images/shop.jpg" class="details-image">
                 <span class="details-title">XXXXXXXxXXXXXXXXXX</span>
             </div>
@@ -23,60 +25,127 @@
 
         <ul class="thambnails-list">
             <li class="thambnails-item">
-                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img1"
-                    data-details-title="bouquet1">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img1.jpg"
+                data-details-title ="bouquet1" data-text-color="red" data-details-sound="sounds/sound1.mp3">
                     <img src="styles/images/img1.jpg" class="thambnails-image">
                     <span class="thambnails-title">flowers1</span>
                 </a>
             </li>
 
             <li class="thambnails-item">
-                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img2"
-                data-details-title="bouquet2">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img2.jpg"
+                data-details-title = "bouquet2" data-details-sound="sounds/sound2.mp3">
                     <img src="styles/images/img2.jpg" class="thambnails-image">
                     <span class="thambnails-title">flowers2</span>
                 </a>
             </li>
 
             <li class="thambnails-item">
-                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img3"
-                data-details-title="bouquet3">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img3.jpg"
+                data-details-title="bouquet3" data-details-sound ="sounds/sound3.mp3">
                     <img src="styles/images/img3.jpg" class="thambnails-image">
                     <span class="thambnails-title">flowers3</span>
                 </a>
             </li>
 
             <li class="thambnails-item">
-                <a class="thambnails-anchor" href="#"data-details-image="styles/images/img4"
-                data-details-title="bouquet4">
+                <a class="thambnails-anchor" href="#"data-details-image="styles/images/img4.jpg"
+                data-details-title="bouquet4" data-details-sound ="sounds/sound4.mp3">
                     <img src="styles/images/img4.jpg" class="thambnails-image">
                     <span class="thambnails-title">flowers4</span>
                 </a>
             </li>
 
             <li class="thambnails-item">
-                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img5"
-                data-details-title="bouquet5">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img5.jpg"
+                data-details-title="bouquet5" data-details-sound ="sounds/sound1.mp3">
                     <img src="styles/images/img5.jpg" class="thambnails-image">
                     <span class="thambnails-title">flowers5</span>
                 </a>
             </li>
 
             <li class="thambnails-item">
-                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img6"
-                data-details-title="bouquet6">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img6.jpg"
+                data-details-title="bouquet6" data-details-sound ="sounds/sound2.mp3">
                     <img src="styles/images/img6.jpg" class="thambnails-image">
                     <span class="thambnails-title">flowers6</span>
                 </a>
             </li>
 
             <li class="thambnails-item">
-                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img7"
-                data-details-title="bouquet7">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img7.jpg"
+                data-details-title="bouquet7" data-details-sound ="sounds/sound3.mp3">
                     <img src="styles/images/img7.jpg" class="thambnails-image">
                     <span class="thambnails-title">flowers7</span>
                 </a>
             </li>
+
+
+
+            <li class="thambnails-item">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img1.jpg"
+                data-details-title ="bouquet1" data-details-sound ="sounds/sound4.mp3">
+                    <img src="styles/images/img1.jpg" class="thambnails-image">
+                    <span class="thambnails-title">flowers1</span>
+                </a>
+            </li>
+
+            <li class="thambnails-item">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img2.jpg"
+                data-details-title = "bouquet2" data-details-sound ="sounds/sound1.mp3">
+                    <img src="styles/images/img2.jpg" class="thambnails-image">
+                    <span class="thambnails-title">flowers2</span>
+                </a>
+            </li>
+
+            <li class="thambnails-item">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img3.jpg"
+                data-details-title="bouquet3" data-details-sound ="sounds/sound2.mp3">
+                    <img src="styles/images/img3.jpg" class="thambnails-image">
+                    <span class="thambnails-title">flowers3</span>
+                </a>
+            </li>
+
+            <li class="thambnails-item">
+                <a class="thambnails-anchor" href="#"data-details-image="styles/images/img4.jpg"
+                data-details-title="bouquet4" data-details-sound ="sounds/sound3.mp3">
+                    <img src="styles/images/img4.jpg" class="thambnails-image">
+                    <span class="thambnails-title">flowers4</span>
+                </a>
+            </li>
+
+            <li class="thambnails-item">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img5.jpg"
+                data-details-title="bouquet5" data-details-sound ="sounds/sound4.mp3">
+                    <img src="styles/images/img5.jpg" class="thambnails-image">
+                    <span class="thambnails-title">flowers5</span>
+                </a>
+            </li>
+
+            <li class="thambnails-item">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img6.jpg"
+                data-details-title="bouquet6" data-details-sound ="sounds/sound1.mp3">
+                    <img src="styles/images/img6.jpg" class="thambnails-image">
+                    <span class="thambnails-title">flowers6</span>
+                </a>
+            </li>
+
+            <li class="thambnails-item">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img7.jpg"
+                data-details-title="bouquet7" data-details-sound ="sounds/sound2.mp3">
+                    <img src="styles/images/img7.jpg" class="thambnails-image">
+                    <span class="thambnails-title">flowers7</span>
+                </a>
+            </li>
+
+            <li class="thambnails-item">
+                <a class="thambnails-anchor" href="#" data-details-image="styles/images/img7.jpg"
+                data-details-title="bouquet7" data-details-sound ="sounds/sound3.mp3">
+                    <img src="styles/images/img7.jpg" class="thambnails-image">
+                    <span class="thambnails-title">flowers7</span>
+                </a>
+            </li>
+            
 
             
 
@@ -84,7 +153,7 @@
 
 
     </main>
-    <script src="src/flowers.js" ></script>
+    <script src="src/flowers.js"></script>
     
 </body>
 </html>
