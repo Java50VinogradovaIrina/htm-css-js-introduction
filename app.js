@@ -1,97 +1,59 @@
-//let num = 40.3;
+// const array = [10, 20, 30, -10, 11, 100]
+// const index = array.indexOf(30);
+//const res = array.splice(index, 1);
+//array.splice(index,0, -10, -20);
+//array.splice(index,2, 20);
+//const ar1 = [40,200];
+//array.splice(index, 1, ...ar1);
+// const NumbersPerPage = 2;
+// const page = 3;
+// const firstIndex = (page-1) * NumbersPerPage;
+// const pageNumbers = array.slice(firstIndex, firstIndex
+//      + NumbersPerPage )
 
-//num = Math.floor(num);
-//num = Math.trunc(num);
- //num = Math.ceil(num);
-//num = Math.round(num);
-//num **= 2;
-//let str = "abcd";
-//let str1 = 'abcd';
-//let res = +"123" + 56;
-//let str2 = "ab" / 8;
- //let res = true + true;
- //let res1 = true && false;
- //let res2  = -123 && 256;
-function getDigitSum(number) {
-    let num = 0;
-    let sum = 0; 
-    
-    while(number) {
-        num = number % 10;
-        number = (number - num)/10;
-        sum = sum+num;
-    }
-    return sum;
-}
+// const ar1 = array.map(multiply2);
+// function multiply2(number) {
+//     return number * 2;
+// }
+// const ar2 = array.map(function (number, index) {
+//     return index + 1 + '. ' + number;
+// });
+// 
+// const ar1 =array.splice(1, 1, 53);
+// console.log (ar1);
 
-getDigitSum(123);
-
-function getDigitSum1(number) {
-   // if(number<0){
-     //   number= -number
-   // }
-number = Math.trunc(Math.abs(number));
-let sum = 0;
-do {
-    const digit = number % 10;
-    number = Math.trunc(number/10);
-    sum += digit;
-}while (number);
-return sum;
-}
-
-
-function computeExpression(expressionStr) {
-    const res = eval(expressionStr);
-    return res;
-    try{
-        res = eval(expressionStr);
-
-    } catch(e) {
-        res =  NaN;
-    }
-
-
+function coloringString(str1, str2) {
+    const arStr2 = Array.from(str2);
+    const res = arStr2.map(function(symbol, index) {
+        let color;
+        if (symbol === str1 [index]) {
+            color = 'green';
+            
+        } else  {
+            color = str1.includes(symbol) ? 'yellow' : 'red';
+        }
+        return color;
+    })
     return res;
 }
-//console.log(computeExpression("9000 / ((10 + 20) ** 2)")) ; //prints 10
 
+console.log(coloringString("pappy", "app"));
+console.log(coloringString("pappy", "apple"));
+console.log(coloringString("pappy", "pappy"));
+console.log(coloringString("hope", "pole"));
 
+function getNumbersWithDigitsAmount(digitsAmount, array) {
+    const res = array.filter(function(number) {
+        const nDigits = getNumberDigits(number);
+        return nDigits === digitsAmount;
 
-function printAnanas() {
-    const res = ("A" +  + "A" + "AS").toLowerCase();
-    console.log (res);
-}
-printAnanas();
-
-function revers(number){
-    let res = number < 0 ? "-" : "";
-    if( number < 0) {
-        number = - number;
-    }
-    number = Math.trunc(number);
-    do {
-        const digit = number % 10;
-        res += digit;
-        number = Math.trunc(number / 10);
-    }while(number);
+    });
     return res;
 }
-let n = 10;
-let count = 0;
-while (--n) {
-    count++;
-}
-let d;
-// 3 + 7 * "10"
-//tests
-console.log("result of getDigitsSum(123.45) is " + getDigitsSum(123.45));
-console.log("result of getDigitsSum(-280.123) is " + getDigitsSum(-280.123));
-console.log("result of getDigitsSum(123) is " + getDigitsSum(123));
-printAnanas();
-console.log("result of computeExpression('9000 / ((10 + 20) ** 2)') is " + computeExpression('9000 / ((10 + 20) ** 2)'));
-console.log("result of computeExpression('9000 / ((10 + 20) ** 2))') + 10 is " + (computeExpression('9000 / ((10 + 20) ** 2)') + 10));
-console.log("result of computeExpression('9 + 100 / 2') is " + computeExpression('9 + 100 / 2'));
-console.log("result of reverse(123.45) is " + reverse(123.45));
-console.log("result of reverse(-280.123) is " + reverse(-280.123));
+function getNumberDigits(number) {
+    number = Math.abs(Math.trunc(number));
+    const res = number.toString().length;
+    return res;
 
+}
+console.log (`getNumbersWithDigitsAmount(3, [1, 100, -100, 25, 1000]) return ${getNumbersWithDigitsAmount (3, [1, 100, -100, 25, 1000]) }`)
