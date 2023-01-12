@@ -1,59 +1,104 @@
-// const array = [10, 20, 30, -10, 11, 100]
-// const index = array.indexOf(30);
-//const res = array.splice(index, 1);
-//array.splice(index,0, -10, -20);
-//array.splice(index,2, 20);
-//const ar1 = [40,200];
-//array.splice(index, 1, ...ar1);
-// const NumbersPerPage = 2;
-// const page = 3;
-// const firstIndex = (page-1) * NumbersPerPage;
-// const pageNumbers = array.slice(firstIndex, firstIndex
-//      + NumbersPerPage )
-
-// const ar1 = array.map(multiply2);
-// function multiply2(number) {
-//     return number * 2;
-// }
-// const ar2 = array.map(function (number, index) {
-//     return index + 1 + '. ' + number;
+// const array = [123, 9, 28, 3, 44];
+// array.sort(function(e1,e2){
+//     let res = e1.toString().length - e2.toString().length;
+//    if(!res) {
+//         res = e1 -e2;
+//     }
+//     return res;
 // });
-// 
-// const ar1 =array.splice(1, 1, 53);
-// console.log (ar1);
 
-function coloringString(str1, str2) {
-    const arStr2 = Array.from(str2);
-    const res = arStr2.map(function(symbol, index) {
-        let color;
-        if (symbol === str1 [index]) {
-            color = 'green';
-            
-        } else  {
-            color = str1.includes(symbol) ? 'yellow' : 'red';
-        }
-        return color;
+// console.log(`result of sorting [123, 9, 28, 3, 44] is ${array}`)
+
+// function sum(array) {
+//     const res = array.reduce(function(res, cur){
+//         return res + cur;
+//     } ,-5);
+//     return res;
+// }
+// console.log(`sum([1,2,3,4,5]) return ${sum([1,2,3,4,5])}`);
+
+
+//HW #15
+const array = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [200, -5, -100, 20, 40]];
+/************************************************************************************** */
+//task sort.1
+function evenOddSort(array) {
+    
+    //sort array of number in the order even numbers go before the odd ones
+    //example input array [20, -10,333,1000, 552, 7, -7] => [20, -10, 1000, 552, 333, 7, -7]
+    return array.sort(function(n1, n2) {
+      return n1 % 2 == 0 ? -1 : 1;
     })
-    return res;
 }
+//task sort.2
+function oddEvenSort(array) {
+    
+    //sort array of number in the order even numbers go after the odd ones
+    //example input array [20, -10,333,1000, 552, 7, -7] => [333, 7, -7, 20, -10, 1000, 552]
+    return array.sort(function(n1, n2) {
+     return n1 % 2 == 0 ? 1 : -1;
+});
+}
+//task sort.3
+function evenAscOddDesc(array) {
+    
+    //sort array of number in the order even numbers go before the odd ones
+    //even numbers should be in the ascending order, odd numbers should be in the descending
+    //example input array [20, -10,333,1000, 552, 7, -7] => [-10, 20, 552, 100, 333, 7, -7]
+    return array.sort(function(n1, n2) {
+      let res = Math.abs(n1 % 2) - Math.abs(n2 % 2);
+      if (!res) {
+        res = n1 % 2 == 0 ? n1 - n2 : n2 - n1;
+      }
+      return res;
+    })
+}
+/*************************************************************************** */
 
-console.log(coloringString("pappy", "app"));
-console.log(coloringString("pappy", "apple"));
-console.log(coloringString("pappy", "pappy"));
-console.log(coloringString("hope", "pole"));
-
-function getNumbersWithDigitsAmount(digitsAmount, array) {
-    const res = array.filter(function(number) {
-        const nDigits = getNumberDigits(number);
-        return nDigits === digitsAmount;
-
+ 
+  //HW #15
+  //task reduce.1
+  function getMin(array) {
+    
+    //find and returns minimal value of array
+    return array.reduce(function(min, cur) {
+      return cur < min ? cur : min;
+    })
+  }
+  //task reduce.2
+  function getMax(array) {
+    //find and returns minimal value of array
+    return array.reduce(function(max, cur) {
+      return cur > max ? cur : max;
+    })
+  }
+  //task reduce.3
+  function getAverage(array) {
+    const sum = array.reduce(function(sum, cur){
+      return sum + cur
     });
+    return sum / array.length;
+  }
+  //task reduce.4
+  function getMinMaxAvg(array) {
+   
+    const res = array.reduce(function (ar, cur) {
+      if (cur < ar[0]) {
+        ar[0] = cur;
+      } else if (cur > ar[1]) {
+        ar[1] = cur;
+      }
+      ar[2] += cur;
+      return ar;
+    }, [array[0], array[0], 0]);
+    res[2] /= array.length;
     return res;
-}
-function getNumberDigits(number) {
-    number = Math.abs(Math.trunc(number));
-    const res = number.toString().length;
-    return res;
-
-}
-console.log (`getNumbersWithDigitsAmount(3, [1, 100, -100, 25, 1000]) return ${getNumbersWithDigitsAmount (3, [1, 100, -100, 25, 1000]) }`)
+  }
+ 
+    console.log(`array: [${array}] evenOddSort => [${evenOddSort(array)}]`);
+  console.log(`array: [${array}] oddEvenSort => [${oddEvenSort(array)}]`);
+  console.log(`array: [${array}] evenAscOddDescSort => [${evenAscOddDesc(array)}]`);
+  console.log(`array: [${array}] getMin => ${getMin(array)}`);
+  console.log(`array: [${array}] getMax => ${getMax(array)}`);
+  console.log(`array: [${array}] getAverage => ${getAverage(array)}`);
+  console.log(`array: [${array}] getMinMaxAvg => [${getMinMaxAvg(array)}]`);
